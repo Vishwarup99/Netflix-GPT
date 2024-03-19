@@ -3,7 +3,6 @@ import Header from './Header';
 import { checkValidData, checkValidSignUp } from "../utils/validation"
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword , updateProfile } from 'firebase/auth';
 import { auth } from '../utils/firebase';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 
@@ -15,7 +14,6 @@ const [userName , setUserName] = useState("");
 const [password , setPassword] = useState("");
 const [errorMessage, setErrorMessage] = useState(null);
 const [errorOnSignUp, setErrorOnSignUp] = useState(null);
-const navigate = useNavigate();
 
 const fullName = useRef(null); // Instead of assigning a state to collect User Input Value, Here we are referencing to the input element
 const reTypePassword = useRef(null);
@@ -42,7 +40,6 @@ const handleSubmitClick = () => {
     }).then(() => {
       const {uid, email , displayName, photoURL} = auth.currentUser;
       dispatch(addUser({uid: uid ,email: email,displayName: displayName , photoURL: photoURL}));
-      navigate("/browse");
     }).catch((error) => {
       setErrorOnSignUp(error.message);
     });
@@ -58,7 +55,6 @@ const handleSubmitClick = () => {
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    navigate("/browse");
     // ...
   })
   .catch((error) => {

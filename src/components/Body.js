@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addUser , removeUser } from '../utils/userSlice';
 
 const Body = () => {
-    const dispatch = useDispatch();
     
     const appRoute = createBrowserRouter([
         {
@@ -22,16 +21,7 @@ const Body = () => {
         }
     ])
 
-    useEffect(()=>{
-        onAuthStateChanged(auth, (user) => {    // Firebase Method to track sign in / sign out
-            if (user) {
-              const {uid, email , displayName, photoURL} = user;
-              dispatch(addUser({uid: uid ,email: email,displayName: displayName , photoURL: photoURL}));
-            } else {
-                dispatch(removeUser());
-            }
-          });
-    },[])
+    
   return (
     <div>
       <RouterProvider router={appRoute} />
