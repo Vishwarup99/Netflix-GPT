@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 
 const useMovieTrailer = (movieId) => {
 const dispatch = useDispatch();
+const trailerVideo = useSelector((store) => store.movies.trailerVideo);
 
 const getMovieVideos = async() => {
     const data = await fetch(`https://try.readme.io/https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US` , API_OPTIONS);
@@ -13,12 +14,13 @@ const getMovieVideos = async() => {
 
     const trailer = result.results.filter(item => item.type === "Trailer");
     const filteredTrailer = trailer.length ? trailer[0] : result.results[0];
-    console.log("V"+filteredTrailer);
     dispatch(addTrailerVideo(filteredTrailer))
 }
 
 useEffect(()=>{
-    getMovieVideos()
+    if(!trailerVideo){
+        getMovieVideos()
+    }
 },[])
 }
 
