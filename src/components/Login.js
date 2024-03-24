@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword , signInWithEmailAndPassword , updatePro
 import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
-import { BG_URL } from '../utils/constants';
+import { BG_URL , USER_AVATAR } from '../utils/constants';
 
 
 const Login = () => {
@@ -18,14 +18,13 @@ const [errorOnSignUp, setErrorOnSignUp] = useState(null);
 
 const fullName = useRef(null); // Instead of assigning a state to collect User Input Value, Here we are referencing to the input element
 const reTypePassword = useRef(null);
-const phoneNumber = useRef(null);
 
 const dispatch = useDispatch();
 
 const handleSubmitClick = () => {
     setErrorMessage(null);
     setErrorOnSignUp(null);
-    const validate = isSignInForm ? checkValidData(userName, password) : checkValidSignUp(fullName.current.value,userName,password,reTypePassword.current.value,phoneNumber.current.value );
+    const validate = isSignInForm ? checkValidData(userName, password) : checkValidSignUp(fullName.current.value,userName,password,reTypePassword.current.value );
     isSignInForm ? setErrorMessage(validate) : setErrorOnSignUp(validate);
 
     if(validate) return;
@@ -37,7 +36,7 @@ const handleSubmitClick = () => {
     const user = userCredential.user;
     console.log(user);
     updateProfile(auth.currentUser, {
-      displayName: fullName.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
+      displayName: fullName.current.value, photoURL: USER_AVATAR
     }).then(() => {
       const {uid, email , displayName, photoURL} = auth.currentUser;
       dispatch(addUser({uid: uid ,email: email,displayName: displayName , photoURL: photoURL}));
@@ -77,7 +76,7 @@ const toggleSignInForm = () => {
     <div>
       <Header />
       <div className='absolute'>
-      <img src={BG_URL} alt="Logo"></img>
+      <img src={BG_URL} alt="Logo" className='h-1000 !important'></img>
     </div>
     <form className="absolute p-12 w-3/12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80" onSubmit={(e) => e.preventDefault()}>
         <h1 className='font-bold text-3xl py-4'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
@@ -94,7 +93,7 @@ const toggleSignInForm = () => {
             value={userName} />
         
         <input 
-            type="text" 
+            type="password" 
             placeholder="Password" 
             className="p-4 my-4 w-full bg-gray-700 rounded-lg"
             onChange={ (e) => setPassword(e.target.value)}
@@ -102,16 +101,10 @@ const toggleSignInForm = () => {
         />
         {(isSignInForm && errorMessage != null) && <p className="text-red-500">{errorMessage}</p> }
         {!isSignInForm && (<input 
-            type="text"
+            type="password"
             ref={reTypePassword}
             placeholder="Retype your password" 
             className="p-4 my-4 w-full bg-gray-700" /> )}
-         {!isSignInForm && (<input 
-            type="text"
-            placeholder="Phone Number" 
-            className="p-4 my-4 w-full bg-gray-700"
-            ref={phoneNumber} />
-             )}
         {(!isSignInForm && errorOnSignUp != null) && <p className="text-red-500">{errorOnSignUp}</p> }
 
         <button className="p-4 my-4 bg-red-700 w-full rounded-lg" onClick={handleSubmitClick}>{isSignInForm ? "Sign In" : "Sign Up"}</button>

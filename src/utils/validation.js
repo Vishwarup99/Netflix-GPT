@@ -19,15 +19,14 @@ export const checkValidData = (email,password) => {
 }
 
 export const checkValidSignUp = (fullName, email, password, reTypePassword, phoneNumber) => {
-    if (!fullName || !email || !password || !phoneNumber) {
+    if (!fullName || !email || !password || !reTypePassword) {
         return "All Fields are Mandatory for SignUp";
     }
 
     const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); 
     const isPasswordValid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password);
-    const isPhoneNumberValid = /^\d{10}$/.test(phoneNumber); // Regex to validate 10 digit phone number
 
-    if (!isEmailValid || !isPasswordValid || !isPhoneNumberValid) {
+    if (!isEmailValid || !isPasswordValid) {
         let errorMessage = "";
 
         if (!isEmailValid) {
@@ -35,9 +34,6 @@ export const checkValidSignUp = (fullName, email, password, reTypePassword, phon
         }
         if (!isPasswordValid) {
             errorMessage += "Password is invalid. ";
-        }
-        if (!isPhoneNumberValid) {
-            errorMessage += "Phone Number is invalid. ";
         }
         if(password != reTypePassword){
             errorMessage += "Passwords do not match"
