@@ -13,7 +13,7 @@ const mainMovie = movies[0];
 const { original_title , overview, id} = mainMovie;
 
   return (
-    <div>
+    <div className="md:pt-0 pt-[30%] bg-black md:pb-[7%]">
       <VideoTitle title={original_title} overview={overview}/>
       <BackgroundVideo movieId={id}/>
     </div>

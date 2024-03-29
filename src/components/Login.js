@@ -76,10 +76,11 @@ const toggleSignInForm = () => {
     <div>
       <Header />
       <div className='absolute'>
-      <img src={BG_URL} alt="Logo" className='h-1000 !important'></img>
-    </div>
-    <form className="absolute p-12 w-3/12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80" onSubmit={(e) => e.preventDefault()}>
-        <h1 className='font-bold text-3xl py-4'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
+        <img src={BG_URL} alt="Logo" className='h-screen object-cover brightness-50 md:w-screen'></img>
+      </div>
+      <div className="form relative flex h-screen items-center justify-center">
+      <form className="w-full rounded-lg bg-black bg-opacity-80 p-12 text-white md:w-3/12" onSubmit={(e) => e.preventDefault()}>
+        <h1 className='text-3xl font-bold text-white'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
         {!isSignInForm && (<input 
             type="text"
             placeholder="Full Name" 
@@ -111,6 +112,7 @@ const toggleSignInForm = () => {
 
         <p className="py-6 cursor-pointer" onClick={toggleSignInForm}>{isSignInForm ? "New to NetFlix? Sign Up Now" : "Already existing User? Sign In Now"}</p>
     </form>
+    </div>
     </div>
   ) 
 }
