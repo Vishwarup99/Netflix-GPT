@@ -101,11 +101,6 @@ const toggleSignInForm = () => {
             value={password}
         />
         {(isSignInForm && errorMessage != null) && <p className="text-red-500">{errorMessage}</p> }
-        {!isSignInForm && (<input 
-            type="password"
-            ref={reTypePassword}
-            placeholder="Retype your password" 
-            className="p-4 my-4 w-full bg-gray-700" /> )}
         {(!isSignInForm && errorOnSignUp != null) && <p className="text-red-500">{errorOnSignUp}</p> }
 
         <button className="p-4 my-4 bg-red-700 w-full rounded-lg" onClick={handleSubmitClick}>{isSignInForm ? "Sign In" : "Sign Up"}</button>
