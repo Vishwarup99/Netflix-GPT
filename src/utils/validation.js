@@ -19,7 +19,7 @@ export const checkValidData = (email,password) => {
 }
 
 export const checkValidSignUp = (fullName, email, password) => {
-    if (!fullName || !email || !password || !reTypePassword) {
+    if (!fullName || !email || !password) {
         return "All Fields are Mandatory for SignUp";
     }
 
