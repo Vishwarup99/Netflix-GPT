@@ -17,14 +17,13 @@ const [errorMessage, setErrorMessage] = useState(null);
 const [errorOnSignUp, setErrorOnSignUp] = useState(null);
 
 const fullName = useRef(null); // Instead of assigning a state to collect User Input Value, Here we are referencing to the input element
-const reTypePassword = useRef(null);
 
 const dispatch = useDispatch();
 
 const handleSubmitClick = () => {
     setErrorMessage(null);
     setErrorOnSignUp(null);
-    const validate = isSignInForm ? checkValidData(userName, password) : checkValidSignUp(fullName.current.value,userName,password,reTypePassword.current.value );
+    const validate = isSignInForm ? checkValidData(userName, password) : checkValidSignUp(fullName.current.value,userName,password );
     isSignInForm ? setErrorMessage(validate) : setErrorOnSignUp(validate);
 
     if(validate) return;

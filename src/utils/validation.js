@@ -18,7 +18,7 @@ export const checkValidData = (email,password) => {
     return null; // If email & Password are valid
 }
 
-export const checkValidSignUp = (fullName, email, password, reTypePassword, phoneNumber) => {
+export const checkValidSignUp = (fullName, email, password) => {
     if (!fullName || !email || !password || !reTypePassword) {
         return "All Fields are Mandatory for SignUp";
     }
@@ -34,9 +34,6 @@ export const checkValidSignUp = (fullName, email, password, reTypePassword, phon
         }
         if (!isPasswordValid) {
             errorMessage += "Password is invalid. ";
-        }
-        if(password != reTypePassword){
-            errorMessage += "Passwords do not match"
         }
 
         return errorMessage.trim();
