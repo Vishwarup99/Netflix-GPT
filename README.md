@@ -6,6 +6,9 @@ The Project is live at:
 https://netflix-gpt-vishwarup99s-projects.vercel.app/
 https://netflix-gpt-gilt-six.vercel.app/
 https://netflix-gpt-git-main-vishwarup99s-projects.vercel.app/
+
+Demo of the Project is available at: https://drive.google.com/file/d/1r7HSgIqR_mltd4vAQEXNdN5CwoN5nPud/view?usp=sharing
+
 ## Available Scripts
 
 In the project directory, you can run:
