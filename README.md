@@ -3,11 +3,7 @@
 Netfix GPT is a React based Web Application which allows Users to Authenticate(Sign Up/Sign In ) and provide a Movie Catalogue of Various Movie Categories. The Application is also Integrated with Open AI to suggest movies based upon User's Preference.
 
 The Project is live at:
-https://netflix-gpt-vishwarup99s-projects.vercel.app/
-
-https://netflix-gpt-gilt-six.vercel.app/
-
-https://netflix-gpt-git-main-vishwarup99s-projects.vercel.app/
+https://netflix-gpt-pi-jade.vercel.app/
 
 Demo of the Project is available at: https://drive.google.com/file/d/1r7HSgIqR_mltd4vAQEXNdN5CwoN5nPud/view?usp=sharing
 
